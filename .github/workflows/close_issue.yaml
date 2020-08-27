@@ -1,12 +1,14 @@
 name: close-issues
 
 # (c) 2020 by Linus Gasser for C4DT.org
-#
+# This action closes issues referenced in the PR in the case the merge
+# does not happen on the 'default' branch.
+# It searches for the same tags as the original github closers.
 
 on:
   pull_request:
     types: [closed]
-    branches: [develops]
+    branches: [develop]
 
 jobs:
   build:
