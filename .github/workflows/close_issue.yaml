@@ -1,6 +1,6 @@
 name: docker-tag
 
-on: [push, pull_request]
+on: [pull_request, push]
 
 jobs:
   build:
@@ -21,4 +21,6 @@ jobs:
         uses: actions/github-script@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: console.log(context)
+          script: |
+            console.log(context)
+            console.log(context.payload.commits)
