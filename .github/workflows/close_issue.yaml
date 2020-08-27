@@ -1,6 +1,7 @@
 name: docker-tag
 
-on: push: [develop]
+on:
+  push: [develop]
 
 jobs:
   build:
