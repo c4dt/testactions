@@ -3,7 +3,7 @@ Adding something at $(shell date)
 
 Some description
 
-Closes #2
+Closes #19
 endef
 
 export COMMIT_MSG

@@ -8,33 +8,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: |
-          echo pr: ${{ github.event.pull_request }}
-          echo pr.merged: ${{ github.event.pull_request.merged }}
-          echo pr.comment: ${{ github.event.pull_request.comment }}
-          echo pr.pr.comments: ${{ github.event.pull_request.pull_request.comments }}
-          echo pr.pr.issue: ${{ github.event.pull_request.pull_request.issue }}
-          echo ev: ${{ github.event }}
-          echo ev.push: ${{ github.event.push }}
-          echo ev_na: ${{ github.event_name }}
-
       - name: script
         uses: actions/github-script@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
+            if (!pr.merged){
+              console.log("Don't close issues when PR is not merged");
+              return;
+            }
+
             const body = pr.body;
-            console.log(body);
             const lines = body.split('\n').map((l)=>l.trim());
-            console.log(lines);
             const closers = new RegExp(
               /(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)/i);
             const issues = lines.filter((l)=>l.match(closers));
-            console.log(issues);
             const issue_nbrs = issues.map((i) => i.replace(/.*#/, ''));
-            console.log(issue_nbrs);
             issue_nbrs.forEach((i) => {
               console.log("Closing issue " + i);
               github.issues.createComment({
@@ -50,4 +40,3 @@ jobs:
                 state: 'closed'
               });
             });
-            console.log(context.payload);
