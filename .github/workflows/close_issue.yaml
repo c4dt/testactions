@@ -19,10 +19,6 @@ jobs:
 
       - name: script
         uses: actions/github-script@v3
-        id: set-result
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: return context
-          result-encoding: string
-      - name: Get result
-        run: echo "${{ steps.set_result.outputs.result }}"
+          script: console.log(context)
