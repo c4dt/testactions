@@ -27,13 +27,13 @@ jobs:
             const pr = context.payload.pull_request;
             const body = pr.body;
             const lines = body.split('\n').map((l)=>l.trim();
-            const closes = new RegExp(
+            const closers = new RegExp(
               /(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)/)
             console.log(1);
             console.log(body);
             console.log(2);
             console.log(lines);
             console.log(3);
-            console.log(lines.filter((l)=>l.match(closes));
+            console.log(lines.filter((l)=>l.match(closers)));
             console.log(4);
             console.log(context.payload);
