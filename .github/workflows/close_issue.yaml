@@ -20,7 +20,6 @@ jobs:
           echo ev_na: ${{ github.event_name }}
 
       - name: script
-        if: github.event.pull_request.merged == 'true'
         uses: actions/github-script@v3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -32,3 +31,5 @@ jobs:
             console.log(body.split('\n');
             console.log(3);
             console.log(body.split("\n");
+            console.log(4);
+            console.log(context.payload);
