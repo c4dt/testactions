@@ -8,7 +8,11 @@ jobs:
     steps:
       - name: test
         run: |
-          echo ${{ github.event.pull_request }}
-          echo ${{ github.event }}
-          echo ${{ github.event.push }}
-          echo ${{ github.event_name }}
+          echo pr: ${{ github.event.pull_request }}
+          echo pr.merged: ${{ github.event.pull_request.merged }}
+          echo pr.comment: ${{ github.event.pull_request.comment }}
+          echo pr.pr.comments: ${{ github.event.pull_request.pull_request.comments }}
+          echo pr.pr.issue: ${{ github.event.pull_request.pull_request.issue }}
+          echo ev: ${{ github.event }}
+          echo ev.push: ${{ github.event.push }}
+          echo ev_na: ${{ github.event_name }}

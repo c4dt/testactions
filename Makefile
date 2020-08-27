@@ -3,7 +3,9 @@ push: commit
 
 commit:
 	date >> something
-	git cam "Adding something at $$(( date ))"
+	git cam "Adding something at $$(( date ))\
+	\
+	Closes #1"
 
 new_branch:
 	git cob test
