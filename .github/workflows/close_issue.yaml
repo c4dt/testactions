@@ -1,8 +1,6 @@
 name: docker-tag
 
-on:
-  push:
-    branches: [develop]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -11,4 +9,6 @@ jobs:
       - name: test
         run: |
           echo ${{ github.event.pull_request }}
+          echo ${{ github.event }}
+          echo ${{ github.event.push }}
           echo ${{ github.event_name }}
