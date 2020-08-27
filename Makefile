@@ -1,6 +1,8 @@
 define COMMIT_MSG
 Adding something at $(shell date)
 
+Some description
+
 Closes #1
 endef
 
