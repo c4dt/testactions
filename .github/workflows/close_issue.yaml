@@ -1,7 +1,6 @@
 name: docker-tag
 
 on:
-  push:
   pull_request:
     types: [closed]
 
