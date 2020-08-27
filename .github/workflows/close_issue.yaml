@@ -1,6 +1,9 @@
 name: docker-tag
 
-on: [pull_request, push]
+on:
+  push:
+  pull_request:
+    types: [closed]
 
 jobs:
   build:
