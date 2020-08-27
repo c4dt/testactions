@@ -28,7 +28,7 @@ jobs:
             const body = pr.body;
             const lines = body.split('\n').map((l)=>l.trim());
             const closers = new RegExp(
-              /(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)/)
+              /(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)/i)
             console.log(1);
             console.log(body);
             console.log(2);
