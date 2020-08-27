@@ -1,0 +1,12 @@
+name: docker-tag
+
+on: push: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: |
+          echo ${{ github.event.pull_request }}
+          echo ${{ github.event_name }}
