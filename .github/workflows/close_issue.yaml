@@ -1,8 +1,12 @@
-name: docker-tag
+name: close-issues
+
+# (c) 2020 by Linus Gasser for C4DT.org
+#
 
 on:
   pull_request:
     types: [closed]
+    branches: [develops]
 
 jobs:
   build:
