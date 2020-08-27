@@ -26,14 +26,13 @@ jobs:
           script: |
             const pr = context.payload.pull_request;
             const body = pr.body;
-            const lines = body.split('\n').map((l)=>l.trim());
-            const closers = new RegExp(
-              /(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)/i)
-            console.log(1);
             console.log(body);
-            console.log(2);
+            const lines = body.split('\n').map((l)=>l.trim());
             console.log(lines);
-            console.log(3);
-            console.log(lines.filter((l)=>l.match(closers)));
-            console.log(4);
+            const closers = new RegExp(
+              /(close|closes|closed|fix|fixes|fixed|resolve|resolves|resolved)/i);
+            const issues = lines.filter((l)=>l.match(closers));
+            console.log(issues);
+            const issue_nbrs = issues.map((i) => i.replace(/.*#/, ''));
+            console.log(issue_nbrs);
             console.log(context.payload);
