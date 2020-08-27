@@ -20,6 +20,6 @@ jobs:
       - name: script
         uses: actions/github-script@0.3.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             echo context
